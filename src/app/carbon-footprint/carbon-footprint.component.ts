@@ -12,6 +12,10 @@ export class CarbonFootprintComponent {
   distanceKm: number = 550;
   consommationPour100Km: number = 5;
 
+  ajouter100Km() {
+    this.distanceKm += 100;
+ }
+
   // Utiliser les différents hooks pour afficher dans la console 
   // ( navigateur => F12 => Console => Journaux )
   // le cycle de vie du composant
