@@ -6,10 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./carbon-footprint.component.css']
 })
 
-// Utiliser les différents hooks pour afficher dans la console 
-// ( navigateur => F12 => Console => Journaux )
-// le cycle de vie du composant
 export class CarbonFootprintComponent {
+
+    // ajout des attributs distance et consommation
+  distanceKm: number = 150;
+  consommationPour100Km: number = 5;
+
+  // Utiliser les différents hooks pour afficher dans la console 
+  // ( navigateur => F12 => Console => Journaux )
+  // le cycle de vie du composant
   ngOnInit() {
     console.log('Le composant a été initialisé.');
   }
@@ -33,4 +38,6 @@ export class CarbonFootprintComponent {
   ngAfterViewChecked() {
     console.log('La vue du composant a été vérifiée.');
   }
+  
+
 }
