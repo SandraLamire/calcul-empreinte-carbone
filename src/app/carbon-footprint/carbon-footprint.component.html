@@ -6,4 +6,9 @@
 <p>Distance totale : {{ distanceKm }} km</p>
 <p>Consommation pour 100 km : {{ consommationPour100Km }} L</p>
 
+<p *ngIf="consommationPour100Km > 7">Attention, votre consommation est élevée</p>
+
+<p *ngIf="consommationPour100Km < 4">Félicitations, votre consommation est faible</p>
+
+
 
