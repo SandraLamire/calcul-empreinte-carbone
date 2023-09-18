@@ -9,12 +9,21 @@ import { Component } from '@angular/core';
 export class CarbonFootprintComponent {
 
     // ajout des attributs distance et consommation
-  distanceKm: number = 550;
+  distanceKm: number = 150;
   consommationPour100Km: number = 5;
 
   ajouter100Km() {
     this.distanceKm += 100;
- }
+  }
+
+  voyages = [
+        { distanceKm: 50, consommationPour100Km: 5 },
+        { distanceKm: 150, consommationPour100Km: 6 },
+        { distanceKm: 250, consommationPour100Km: 7 },
+        { distanceKm: 350, consommationPour100Km: 8 },
+        { distanceKm: 450, consommationPour100Km: 9 }
+    ]
+
 
   // Utiliser les différents hooks pour afficher dans la console 
   // ( navigateur => F12 => Console => Journaux )
