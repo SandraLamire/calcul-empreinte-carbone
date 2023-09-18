@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 export class CarbonFootprintComponent {
 
     // ajout des attributs distance et consommation
-  distanceKm: number = 150;
+  distanceKm: number = 550;
   consommationPour100Km: number = 5;
 
   // Utiliser les différents hooks pour afficher dans la console 
