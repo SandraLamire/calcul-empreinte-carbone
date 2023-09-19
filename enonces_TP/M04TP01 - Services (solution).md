@@ -71,11 +71,13 @@ Mettre en place un service permettant de calculer l'empreinte carbone d'un voyag
    getResumeVoyages() {
      let distanceKm = 0;
      let consommationPour100Km = 0;
+     let moyenneConsommation = 0;      // correction perso = donnée qui manquait - SL -
      this.voyages.forEach(voyage => {
        distanceKm += voyage.distanceKm;
        consommationPour100Km += voyage.consommationPour100Km;
+       moyenneConsommation = consommationPour100Km / this.voyages.length;    // correction perso = donnée qui manquait - SL -
      });
-     return { distanceKm, consommationPour100Km };
+     return { distanceKm, consommationPour100Km, moyenneConsommation }; // ajout moyenneConsommation qui manquait - SL -
    }
    ```
 - Alimenter les attributs `distanceKm` et `consommationPour100Km` en appelant la méthode `getResumeVoyages()` dans le composant `carbon-footprint`
