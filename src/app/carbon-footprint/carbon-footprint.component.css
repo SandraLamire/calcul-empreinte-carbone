@@ -1,3 +1,8 @@
+* {
+   font-size: 24px;
+   margin: 4 px;
+}
+
 .haute-distance {
     font-weight: bold;
     color: red;
