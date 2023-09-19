@@ -7,6 +7,9 @@ import { FooterComponent } from './footer/footer.component';
 import { CarbonFootprintComponent } from './carbon-footprint/carbon-footprint.component';
 import { CarbonFootprintFormComponent } from './carbon-footprint-form/carbon-footprint-form.component';
 import { CarbonFootprintResultComponent } from './carbon-footprint-result/carbon-footprint-result.component';
+// import service
+import { CarbonFootprintComputeService } from './services/carbon-footprint-compute.service';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +23,7 @@ import { CarbonFootprintResultComponent } from './carbon-footprint-result/carbon
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [CarbonFootprintComputeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

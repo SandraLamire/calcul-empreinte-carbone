@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+// import du service
+import { CarbonFootprintComputeService } from '../services/carbon-footprint-compute.service';
 
 @Component({
   selector: 'app-carbon-footprint',
@@ -16,6 +18,13 @@ export class CarbonFootprintComponent {
     this.distanceKm += 100;
   }
 
+  /* récupération du tableau de données voyages dans services */
+  constructor(private carbonFootprintComputeService: CarbonFootprintComputeService) { };
+
+  voyages = this.carbonFootprintComputeService.getVoyages();
+
+
+ /* Tableau déplacé dans services 
   voyages = [
         { distanceKm: 50, consommationPour100Km: 5 },
         { distanceKm: 150, consommationPour100Km: 6 },
@@ -23,15 +32,23 @@ export class CarbonFootprintComponent {
         { distanceKm: 350, consommationPour100Km: 8 },
         { distanceKm: 450, consommationPour100Km: 9 }
     ];
-
-    constructor() {
+ 
+  constructor() {
       this.calculerTotalEtMoyenne();
-    }
-
+  }
+*/
     genererVoyage() {
       const distance = Math.floor(Math.random() * 1000) + 1;
       const consommation = Math.floor(Math.random() * 10) + 1;
+      /* Déplacé dans addVoyage dasn services
       this.voyages.push({ distanceKm: distance, consommationPour100Km: consommation });
+      */
+      this.carbonFootprintComputeService.addVoyage({ 
+        distanceKm: distance, 
+        consommationPour100Km: consommation
+      });
+      this.voyages = this.carbonFootprintComputeService.getVoyages();
+      this.calculerTotalEtMoyenne();
     };
 
     calculerTotalEtMoyenne() {
@@ -44,6 +61,7 @@ export class CarbonFootprintComponent {
       this.distanceKm = total;
       this.consommationPour100Km = moyenne / this.voyages.length;
     }
+
 
 
   // Utiliser les différents hooks pour afficher dans la console 
