@@ -2,27 +2,22 @@
 <app-carbon-footprint-form></app-carbon-footprint-form>
 <app-carbon-footprint-result></app-carbon-footprint-result>
 
-<p>Consommation totale : {{ consommationPour100Km * distanceKm / 100 }} L</p>
-<p>Distance totale : {{ distanceKm }} km</p>
-
 <!-- Pipe pour consommation avec 2 chiffres après la virgule -->
 <p>Consommation totale : {{ consommationPour100Km * distanceKm / 100 | number:'1.2-2' }} L</p>
 
 <p [ngStyle]="{'color': consommationPour100Km > 7 ? 'red' : consommationPour100Km < 4 ? 'green' : 'black'}">
-    Consommation pour 100 km : {{ consommationPour100Km }} L
+   Consommation pour 100 km : {{ consommationPour100Km | number:'1.2-2' }} L
 </p>
-
+ 
 <p *ngIf="consommationPour100Km > 7">Attention, votre consommation est élevée</p>
-
 <p *ngIf="consommationPour100Km < 4">Félicitations, votre consommation est faible</p>
-
 <p *ngIf="consommationPour100Km >= 4 && consommationPour100Km <= 7">Votre consommation est dans la moyenne</p>
 
 <p [ngClass]="{'haute-distance': distanceKm > 500, 'basse-distance': distanceKm < 100}">
     Distance totale : {{ distanceKm }} km
 </p>
 
-<button (click)="ajouter100Km()">+100km</button>
+<button (click)="ajouter100Km()">+100 km</button>
 
 <h2>Liste des voyages</h2>
    <table>
