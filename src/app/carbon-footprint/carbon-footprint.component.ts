@@ -22,7 +22,28 @@ export class CarbonFootprintComponent {
         { distanceKm: 250, consommationPour100Km: 7 },
         { distanceKm: 350, consommationPour100Km: 8 },
         { distanceKm: 450, consommationPour100Km: 9 }
-    ]
+    ];
+
+    constructor() {
+      this.calculerTotalEtMoyenne();
+    }
+
+    genererVoyage() {
+      const distance = Math.floor(Math.random() * 1000) + 1;
+      const consommation = Math.floor(Math.random() * 10) + 1;
+      this.voyages.push({ distanceKm: distance, consommationPour100Km: consommation });
+    };
+
+    calculerTotalEtMoyenne() {
+      let total = 0;
+      let moyenne = 0;
+      for (const voyage of this.voyages) {
+        total += voyage.distanceKm;
+        moyenne += voyage.consommationPour100Km;
+      }
+      this.distanceKm = total;
+      this.consommationPour100Km = moyenne / this.voyages.length;
+    }
 
 
   // Utiliser les différents hooks pour afficher dans la console 
