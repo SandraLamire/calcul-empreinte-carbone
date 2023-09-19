@@ -18,13 +18,7 @@ export class CarbonFootprintComponent {
     this.distanceKm += 100;
   }
 
-  /* récupération du tableau de données voyages dans services */
-  constructor(private carbonFootprintComputeService: CarbonFootprintComputeService) { };
-
-  voyages = this.carbonFootprintComputeService.getVoyages();
-
-
- /* Tableau déplacé dans services 
+  /* Tableau déplacé dans services 
   voyages = [
         { distanceKm: 50, consommationPour100Km: 5 },
         { distanceKm: 150, consommationPour100Km: 6 },
@@ -36,22 +30,29 @@ export class CarbonFootprintComponent {
   constructor() {
       this.calculerTotalEtMoyenne();
   }
-*/
+  */
+
+  /* récupération du tableau de données voyages dans services */
+  constructor(private carbonFootprintComputeService: CarbonFootprintComputeService) { };
+
+  voyages = this.carbonFootprintComputeService.getVoyages();
+
+
+ 
+    // Appel à la méthode addVoyage(voyage)
     genererVoyage() {
       const distance = Math.floor(Math.random() * 1000) + 1;
       const consommation = Math.floor(Math.random() * 10) + 1;
-      /* Déplacé dans addVoyage dasn services
+      /* Déplacé dans addVoyage dans services
       this.voyages.push({ distanceKm: distance, consommationPour100Km: consommation });
       */
-      this.carbonFootprintComputeService.addVoyage({ 
-        distanceKm: distance, 
-        consommationPour100Km: consommation
-      });
+      this.carbonFootprintComputeService.addVoyage({ distanceKm: distance, consommationPour100Km: consommation });
       this.voyages = this.carbonFootprintComputeService.getVoyages();
       this.calculerTotalEtMoyenne();
     };
 
     calculerTotalEtMoyenne() {
+      /* Déplacé-Modifié dans services
       let total = 0;
       let moyenne = 0;
       for (const voyage of this.voyages) {
@@ -60,8 +61,11 @@ export class CarbonFootprintComponent {
       }
       this.distanceKm = total;
       this.consommationPour100Km = moyenne / this.voyages.length;
+      */
+      let resume = this.carbonFootprintComputeService.getResumeVoyages();
+      this.distanceKm = resume.distanceKm;
+      this.consommationPour100Km = resume.moyenneConsommation;
     }
-
 
 
   // Utiliser les différents hooks pour afficher dans la console 

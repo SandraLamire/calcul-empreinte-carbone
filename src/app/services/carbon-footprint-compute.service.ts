@@ -7,12 +7,12 @@ export class CarbonFootprintComputeService {
   // pour calcul de l'empreinte carbone d'un voyage en voiture
   constructor() { }
 
-  voyages = [
-    { distanceKm: 50, consommationPour100Km: 5 },
-    { distanceKm: 150, consommationPour100Km: 6 },
-    { distanceKm: 250, consommationPour100Km: 7 },
-    { distanceKm: 350, consommationPour100Km: 8 },
-    { distanceKm: 450, consommationPour100Km: 9 }
+  private voyages = [
+    { distanceKm: 100, consommationPour100Km: 5.5 },
+    { distanceKm: 200, consommationPour100Km: 6.5 },
+    { distanceKm: 300, consommationPour100Km: 7.5 },
+    { distanceKm: 400, consommationPour100Km: 8.5 },
+    { distanceKm: 500, consommationPour100Km: 9.5 },
   ];
 
   getVoyages() {
@@ -22,4 +22,16 @@ export class CarbonFootprintComputeService {
   addVoyage(voyage: any) {
     this.voyages.push(voyage);
   }
+
+  getResumeVoyages() {
+    let distanceKm = 0;
+    let consommationPour100Km = 0;
+    let moyenneConsommation = 0;
+    this.voyages.forEach(voyage => {
+      distanceKm += voyage.distanceKm;
+      consommationPour100Km += voyage.consommationPour100Km;
+      moyenneConsommation = consommationPour100Km / this.voyages.length;
+    });
+    return { distanceKm, consommationPour100Km, moyenneConsommation };
+  } 
 }
